@@ -24,7 +24,7 @@ dependencies[] = file
 dependencies[] = rdf
 
 dependencies[] = admin_menu
-dependencies[] = backup_migratexx`xx
+dependencies[] = backup_migrate
 dependencies[] = ctools
 dependencies[] = ctools_plugin_example
 dependencies[] = context
@@ -62,7 +62,7 @@ dependencies[] = views_ui
 dependencies[] = webform
 dependencies[] = workbench_moderation
 dependencies[] = workbench
-dependencies[] = wysiwig
+dependencies[] = wysiwyg
 
 
 
