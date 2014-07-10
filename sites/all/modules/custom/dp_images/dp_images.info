@@ -1,0 +1,8 @@
+name = DP Image Override
+description = Updates Images after Devel_generate 
+package = Digital Pulp
+core = 7.x
+
+dependencies[] = devel_image_provider
+
+files[] = plugins/dp_images/provider/DP_PlaceholdProvider.class.php

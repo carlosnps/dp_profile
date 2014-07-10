@@ -1,0 +1,122 @@
+<?php
+
+/**
+ * Implementation of hook_form_alter
+ */
+
+function dp_images_form_alter(&$form, &$form_state, $form_id) {
+
+  if($form_id == "devel_image_provider_providers_form") {
+    if (isset($form_state['dp_imgages_form_alter'])) {
+      $done = TRUE;
+    } else {
+      $done = FALSE;
+    }
+    if (!$done) {
+      // Dont run this block of code more than 1x
+      $form_state['dp_imgages_form_alter'] = 'All done';
+
+      // Lets get the Options from devel_image_provider
+      $options = $form['available_providers']['devel_image_provider_method_selected']['#options'];
+
+      // Lets get our  plugins.
+      ctools_include('plugins');
+      $dp_images_plugins = ctools_get_plugins('dp_images', 'provider');
+
+      // initialize our elements to array
+      $elements = array();
+
+      // Lets process our Plugins
+      foreach ($dp_images_plugins as $key=>$plugin) {
+ 
+        $class = ctools_plugin_get_class($plugin, 'class');
+        if (class_exists($class)) {
+          $form_state['plugins'][$key] = $dp_images_plugins[$key];;
+          $class = new $class($plugin);
+          $elements[$plugin['name']] = $class->settingsForm();
+          $options[$plugin['name']] = $plugin['title'];
+        } 
+      }
+
+
+      // Lets alter our form
+      $form['available_providers']['devel_image_provider_method_selected']['#options'] = $options;
+      // Get all the plugin configuration forms.
+      foreach ($elements as $element) {
+        $form['config_providers'] += $element;
+      }
+
+      // If the Default Image Provider is in the plugin for this module we set 
+      //Drupal Varialbe (devel_generate_image_function) to 'dp_images_image_provider_generate'.
+      // If the value of available providers is = 'dp_images_image_provider_generate' then we need to
+      // make available_providers visible on the form 
+      if (variable_get('devel_generate_image_function' , 'Not On File') == 'dp_images_image_provider_generate') {
+        unset($form['available_providers']['#states']);
+        unset($form['devel_generate_image_function']['#options']['devel_image_provider_generate']);
+        $form['devel_generate_image_function']['#options']['dp_images_image_provider_generate'] = t('External images provider');      
+      }
+      
+      $form['#submit'][] = "dp_images_form_submit";
+    }
+  }
+}
+
+/**
+ *
+ *  Implements form submit callback
+ *
+ */
+
+function dp_images_form_submit($form, &$form_state) {
+
+  // if we are changing back to default from a plugin in this module then we have not reset the $form_state['available_providers']['devel_image_provider_method_selected']' in devel_image_prover_module .. it still has this plugins value 
+  if ($form_state['values']['devel_generate_image_function'] == '_image_devel_generate') {
+    $form_state['values']['available_providers']['devel_image_provider_method_selected'] = "";
+  }
+
+  if ($form_state['values']['available_providers']['devel_image_provider_method_selected'] == "DP_placehold") {
+    variable_set('devel_generate_image_function', 'dp_images_image_provider_generate');
+  }
+  // fixes bug in contrib module devel_image_provider.module where it always was showing the provider settings fieldset when 
+  // swithcing to Default on Choosing Image Prover
+  if (variable_get('devel_generate_image_function', '_image_devel_generate') == '_image_devel_generate') {
+    variable_del('devel_image_provider_method_selected');
+  }
+}  
+
+/**
+ *
+ * Implement the Image Provider Call
+
+ *
+ */
+function dp_images_image_provider_generate($object, $field, $instance, $bundle) {
+  ctools_include('plugins');
+  $provider = variable_get('devel_image_provider_method_selected', array());
+  $plugin = ctools_get_plugins('dp_images', 'provider', $provider);
+  $class = ctools_plugin_get_class($plugin, 'class');
+  if (class_exists($class)) {
+    $class = new $class($plugin);
+    return $class->generateImage($object, $field, $instance, $bundle);
+  } 
+}
+
+
+/**
+ * Implements hook_ctools_plugin_type().
+ */
+function dp_images_ctools_plugin_type() {
+  $plugins['provider'] = array(
+    'classes' => array('class'),
+    'cache' => TRUE,
+  );
+  return $plugins;
+}
+
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function dp_images_ctools_plugin_directory($module, $plugin) {
+  return 'plugins/' . $module . '/' . $plugin;
+}
