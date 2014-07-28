@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Provider Search Infrastructure feature.
+ */
+
+include_once 'provider_search_infrastructure.features.inc';

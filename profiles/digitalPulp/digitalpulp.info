@@ -68,5 +68,6 @@ dependencies[] = workbench_moderation
 dependencies[] = workbench
 dependencies[] = wysiwyg
 
-
+// Features
+dependencies[] = provider_search_infrastructure
 
