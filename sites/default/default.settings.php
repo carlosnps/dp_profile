@@ -551,3 +551,13 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
  * Remove the leading hash signs to disable.
  */
 # $conf['allow_authorize_operations'] = FALSE;
+  $conf['feeds_debug'] = TRUE;
+  $conf['feeds_process_limit'] = 100;
+
+/**
+ *   Setting up the Acquia Solr Search
+ *   
+ */
+ 
+  $conf['Identifier'] = 'AITV-52525';
+  $conf['Key'] = 'a6e958bfa1db1b97dce5d560e796c4df';
