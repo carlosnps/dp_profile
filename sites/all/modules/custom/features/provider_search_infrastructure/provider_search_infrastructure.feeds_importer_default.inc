@@ -664,8 +664,8 @@ function provider_search_infrastructure_feeds_importer_default() {
     'update' => 0,
     'import_period' => '0',
     'expire_period' => 3600,
-    'import_on_create' => 0,
-    'process_in_background' => 1,
+    'import_on_create' => 1,
+    'process_in_background' => 0,
   );
   $export['vnsny'] = $feeds_importer;
 

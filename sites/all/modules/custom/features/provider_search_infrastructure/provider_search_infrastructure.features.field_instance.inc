@@ -457,10 +457,10 @@ function provider_search_infrastructure_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 20,
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 53,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -474,16 +474,16 @@ function provider_search_infrastructure_field_default_field_instances() {
     'label' => 'County',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'text',
+      'active' => 0,
+      'module' => 'taxonomy',
       'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
         'size' => 60,
       ),
-      'type' => 'text_textfield',
+      'type' => 'taxonomy_autocomplete',
       'weight' => 17,
     ),
   );

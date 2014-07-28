@@ -111,6 +111,7 @@ features[field_instance][] = node-provider-field_state
 features[field_instance][] = node-provider-field_translation_services
 features[field_instance][] = node-provider-field_zip
 features[node][] = provider
+features[taxonomy][] = county
 features[taxonomy][] = degree
 features[taxonomy][] = hospital_privilege
 features[taxonomy][] = language
