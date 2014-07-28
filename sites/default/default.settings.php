@@ -559,5 +559,5 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
  *   
  */
  
-  $conf['Identifier'] = 'AITV-52525';
-  $conf['Key'] = 'a6e958bfa1db1b97dce5d560e796c4df';
+  $conf['acquia_subscription_id'] = 'AITV-52525';
+  $conf['cquia_subscription_key'] = 'a6e958bfa1db1b97dce5d560e796c4df';
