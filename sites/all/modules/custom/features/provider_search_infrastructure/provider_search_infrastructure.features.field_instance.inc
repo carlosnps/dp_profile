@@ -50,7 +50,7 @@ function provider_search_infrastructure_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 2,
+      'weight' => 1,
     ),
   );
 
@@ -127,7 +127,7 @@ function provider_search_infrastructure_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 12,
+      'weight' => 11,
     ),
   );
 
@@ -167,7 +167,7 @@ function provider_search_infrastructure_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 13,
+      'weight' => 12,
     ),
   );
 
@@ -207,7 +207,7 @@ function provider_search_infrastructure_field_default_field_instances() {
         'size' => 15,
       ),
       'type' => 'text_textfield',
-      'weight' => 21,
+      'weight' => 20,
     ),
   );
 
@@ -287,7 +287,7 @@ function provider_search_infrastructure_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 22,
+      'weight' => 21,
     ),
   );
 
@@ -364,7 +364,7 @@ function provider_search_infrastructure_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 14,
+      'weight' => 13,
     ),
   );
 
@@ -484,7 +484,7 @@ function provider_search_infrastructure_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 17,
+      'weight' => 16,
     ),
   );
 
@@ -524,7 +524,7 @@ function provider_search_infrastructure_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 9,
+      'weight' => 8,
     ),
   );
 
@@ -678,7 +678,7 @@ function provider_search_infrastructure_field_default_field_instances() {
         'size' => 15,
       ),
       'type' => 'text_textfield',
-      'weight' => 28,
+      'weight' => 27,
     ),
   );
 
@@ -718,7 +718,7 @@ function provider_search_infrastructure_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 7,
+      'weight' => 6,
     ),
   );
 
@@ -755,7 +755,7 @@ function provider_search_infrastructure_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 19,
+      'weight' => 18,
     ),
   );
 
@@ -829,7 +829,7 @@ function provider_search_infrastructure_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 24,
+      'weight' => 23,
     ),
   );
 
@@ -869,7 +869,7 @@ function provider_search_infrastructure_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 10,
+      'weight' => 9,
     ),
   );
 
@@ -909,7 +909,7 @@ function provider_search_infrastructure_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 6,
+      'weight' => 5,
     ),
   );
 
@@ -989,7 +989,7 @@ function provider_search_infrastructure_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 25,
+      'weight' => 24,
     ),
   );
 
@@ -1072,7 +1072,7 @@ function provider_search_infrastructure_field_default_field_instances() {
         'size' => 2,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 7,
     ),
   );
 
@@ -1186,7 +1186,7 @@ function provider_search_infrastructure_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 26,
+      'weight' => 25,
     ),
   );
 
@@ -1263,7 +1263,7 @@ function provider_search_infrastructure_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 20,
+      'weight' => 19,
     ),
   );
 
@@ -1303,7 +1303,7 @@ function provider_search_infrastructure_field_default_field_instances() {
         'size' => 15,
       ),
       'type' => 'text_textfield',
-      'weight' => 18,
+      'weight' => 17,
     ),
   );
 
@@ -1380,7 +1380,7 @@ function provider_search_infrastructure_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => 4,
     ),
   );
 
@@ -1420,7 +1420,7 @@ function provider_search_infrastructure_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 11,
+      'weight' => 10,
     ),
   );
 
@@ -1537,7 +1537,7 @@ function provider_search_infrastructure_field_default_field_instances() {
         'size' => 25,
       ),
       'type' => 'text_textfield',
-      'weight' => 27,
+      'weight' => 26,
     ),
   );
 
@@ -1577,7 +1577,7 @@ function provider_search_infrastructure_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 23,
+      'weight' => 22,
     ),
   );
 
@@ -1617,7 +1617,7 @@ function provider_search_infrastructure_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 3,
+      'weight' => 2,
     ),
   );
 
@@ -1734,7 +1734,7 @@ function provider_search_infrastructure_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 29,
+      'weight' => 28,
     ),
   );
 
@@ -1774,7 +1774,7 @@ function provider_search_infrastructure_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 4,
+      'weight' => 3,
     ),
   );
 
@@ -1814,7 +1814,7 @@ function provider_search_infrastructure_field_default_field_instances() {
         'size' => 2,
       ),
       'type' => 'text_textfield',
-      'weight' => 15,
+      'weight' => 14,
     ),
   );
 
@@ -1891,7 +1891,7 @@ function provider_search_infrastructure_field_default_field_instances() {
         'size' => 9,
       ),
       'type' => 'text_textfield',
-      'weight' => 16,
+      'weight' => 15,
     ),
   );
 

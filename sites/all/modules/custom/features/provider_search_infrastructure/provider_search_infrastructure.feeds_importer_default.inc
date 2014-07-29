@@ -32,9 +32,8 @@ function provider_search_infrastructure_feeds_importer_default() {
       'plugin_key' => 'FeedsXPathParserXML',
       'config' => array(
         'sources' => array(
-          'xpathparser:71' => 'PROVIDER_LAST_NAME',
-          'xpathparser:0' => 'PROVIDER_TYPE',
-          'xpathparser:1' => 'SPECIALTY1',
+          'xpathparser:0' => 'Provider_Type',
+          'xpathparser:1' => 'Specialty1',
           'xpathparser:2' => 'SPECIALTY2',
           'xpathparser:3' => 'SPECIALTY3',
           'xpathparser:4' => 'PRACTICE_OFFICE_PROV_ID',
@@ -52,7 +51,6 @@ function provider_search_infrastructure_feeds_importer_default() {
           'xpathparser:16' => 'CITY',
           'xpathparser:17' => 'STATE',
           'xpathparser:18' => 'ZIP',
-          'xpathparser:19' => 'COUNTY',
           'xpathparser:20' => 'PHONE',
           'xpathparser:21' => 'HANDICAP_ACCESS',
           'xpathparser:22' => 'PANEL_STATUS',
@@ -104,9 +102,9 @@ function provider_search_infrastructure_feeds_importer_default() {
           'xpathparser:68' => 'ELECTRONIC_PRESCRIBING',
           'xpathparser:69' => 'PROVIDER_URL',
           'xpathparser:70' => 'PROVIDER_EMAIL',
+          'xpathparser:71' => 'COUNTY',
         ),
         'rawXML' => array(
-          'xpathparser:71' => 0,
           'xpathparser:0' => 0,
           'xpathparser:1' => 0,
           'xpathparser:2' => 0,
@@ -126,7 +124,6 @@ function provider_search_infrastructure_feeds_importer_default() {
           'xpathparser:16' => 0,
           'xpathparser:17' => 0,
           'xpathparser:18' => 0,
-          'xpathparser:19' => 0,
           'xpathparser:20' => 0,
           'xpathparser:21' => 0,
           'xpathparser:22' => 0,
@@ -178,13 +175,13 @@ function provider_search_infrastructure_feeds_importer_default() {
           'xpathparser:68' => 0,
           'xpathparser:69' => 0,
           'xpathparser:70' => 0,
+          'xpathparser:71' => 0,
         ),
         'context' => '//DATA_RECORD',
         'exp' => array(
           'errors' => 0,
           'debug' => array(
             'context' => 0,
-            'xpathparser:71' => 0,
             'xpathparser:0' => 0,
             'xpathparser:1' => 0,
             'xpathparser:2' => 0,
@@ -204,7 +201,6 @@ function provider_search_infrastructure_feeds_importer_default() {
             'xpathparser:16' => 0,
             'xpathparser:17' => 0,
             'xpathparser:18' => 0,
-            'xpathparser:19' => 0,
             'xpathparser:20' => 0,
             'xpathparser:21' => 0,
             'xpathparser:22' => 0,
@@ -256,6 +252,7 @@ function provider_search_infrastructure_feeds_importer_default() {
             'xpathparser:68' => 0,
             'xpathparser:69' => 0,
             'xpathparser:70' => 0,
+            'xpathparser:71' => 0,
           ),
         ),
         'allow_override' => 1,
@@ -264,394 +261,395 @@ function provider_search_infrastructure_feeds_importer_default() {
     'processor' => array(
       'plugin_key' => 'FeedsNodeProcessor',
       'config' => array(
-        'expire' => '-1',
-        'author' => 0,
-        'authorize' => 0,
+        'expire' => '3600',
+        'author' => '1',
+        'authorize' => 1,
         'mappings' => array(
           0 => array(
-            'source' => 'xpathparser:71',
-            'target' => 'title',
-            'unique' => FALSE,
-          ),
-          1 => array(
             'source' => 'xpathparser:0',
             'target' => 'field_provider_type',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          2 => array(
+          1 => array(
             'source' => 'xpathparser:1',
             'target' => 'field_specialty1',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          3 => array(
+          2 => array(
             'source' => 'xpathparser:2',
             'target' => 'field_specialty1',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          4 => array(
+          3 => array(
             'source' => 'xpathparser:3',
             'target' => 'field_specialty1',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          5 => array(
+          4 => array(
             'source' => 'xpathparser:4',
             'target' => 'field_practe_office_providerid',
             'unique' => FALSE,
           ),
-          6 => array(
+          5 => array(
             'source' => 'xpathparser:5',
             'target' => 'field_last_name',
             'unique' => FALSE,
           ),
-          7 => array(
+          6 => array(
             'source' => 'xpathparser:6',
             'target' => 'field_first_name',
             'unique' => FALSE,
           ),
-          8 => array(
+          7 => array(
             'source' => 'xpathparser:7',
             'target' => 'field_middle_initial',
             'unique' => FALSE,
           ),
-          9 => array(
+          8 => array(
             'source' => 'xpathparser:8',
             'target' => 'field_degree',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          10 => array(
+          9 => array(
             'source' => 'xpathparser:9',
             'target' => 'field_hospital_priv',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          11 => array(
+          10 => array(
             'source' => 'xpathparser:10',
             'target' => 'field_hospital_priv',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          12 => array(
+          11 => array(
             'source' => 'xpathparser:11',
             'target' => 'field_hospital_priv',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          13 => array(
+          12 => array(
             'source' => 'xpathparser:12',
             'target' => 'field_hospital_priv',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          14 => array(
+          13 => array(
             'source' => 'xpathparser:13',
             'target' => 'field_practice_name',
             'unique' => FALSE,
           ),
-          15 => array(
+          14 => array(
             'source' => 'xpathparser:14',
             'target' => 'field_address_1',
             'unique' => FALSE,
           ),
-          16 => array(
+          15 => array(
             'source' => 'xpathparser:15',
             'target' => 'field_address_2',
             'unique' => FALSE,
           ),
-          17 => array(
+          16 => array(
             'source' => 'xpathparser:16',
             'target' => 'field_city',
             'unique' => FALSE,
           ),
-          18 => array(
+          17 => array(
             'source' => 'xpathparser:17',
             'target' => 'field_state',
             'unique' => FALSE,
           ),
-          19 => array(
+          18 => array(
             'source' => 'xpathparser:18',
             'target' => 'field_zip',
             'unique' => FALSE,
           ),
-          20 => array(
+          19 => array(
             'source' => 'xpathparser:20',
             'target' => 'field_phone',
             'unique' => FALSE,
           ),
-          21 => array(
+          20 => array(
             'source' => 'xpathparser:21',
             'target' => 'field_handicap_access',
             'unique' => FALSE,
           ),
-          22 => array(
+          21 => array(
             'source' => 'xpathparser:22',
             'target' => 'field_panel_status',
             'unique' => FALSE,
           ),
-          23 => array(
+          22 => array(
             'source' => 'xpathparser:23',
             'target' => 'field_after_hours_tel',
             'unique' => FALSE,
           ),
-          24 => array(
+          23 => array(
             'source' => 'xpathparser:24',
             'target' => 'field_board_certified',
             'unique' => FALSE,
           ),
-          25 => array(
+          24 => array(
             'source' => 'xpathparser:25',
             'target' => 'field_provider_lang',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          26 => array(
+          25 => array(
             'source' => 'xpathparser:26',
             'target' => 'field_provider_type',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          27 => array(
+          26 => array(
             'source' => 'xpathparser:27',
             'target' => 'field_provider_lang',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          28 => array(
+          27 => array(
             'source' => 'xpathparser:28',
             'target' => 'field_provider_lang',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          29 => array(
+          28 => array(
             'source' => 'xpathparser:29',
             'target' => 'field_provider_lang',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          30 => array(
+          29 => array(
             'source' => 'xpathparser:30',
             'target' => 'field_provider_lang',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          31 => array(
+          30 => array(
             'source' => 'xpathparser:31',
             'target' => 'field_provider_lang',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          32 => array(
+          31 => array(
             'source' => 'xpathparser:32',
             'target' => 'field_provider_lang',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          33 => array(
+          32 => array(
             'source' => 'xpathparser:33',
             'target' => 'field_provider_lang',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          34 => array(
+          33 => array(
             'source' => 'xpathparser:34',
             'target' => 'field_provider_lang',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          35 => array(
+          34 => array(
             'source' => 'xpathparser:35',
             'target' => 'field_provider_lang',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          36 => array(
+          35 => array(
             'source' => 'xpathparser:36',
             'target' => 'field_provider_lang',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          37 => array(
+          36 => array(
             'source' => 'xpathparser:37',
             'target' => 'field_provider_lang',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          38 => array(
+          37 => array(
             'source' => 'xpathparser:38',
             'target' => 'field_provider_lang',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          39 => array(
+          38 => array(
             'source' => 'xpathparser:39',
             'target' => 'field_provider_lang',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          40 => array(
+          39 => array(
             'source' => 'xpathparser:40',
             'target' => 'field_provider_lang',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          41 => array(
+          40 => array(
             'source' => 'xpathparser:41',
             'target' => 'field_provider_lang',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          42 => array(
+          41 => array(
             'source' => 'xpathparser:42',
             'target' => 'field_provider_lang',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          43 => array(
+          42 => array(
             'source' => 'xpathparser:43',
             'target' => 'field_provider_lang',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          44 => array(
+          43 => array(
             'source' => 'xpathparser:44',
             'target' => 'field_provider_lang',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          45 => array(
+          44 => array(
             'source' => 'xpathparser:45',
             'target' => 'field_home_visits',
             'unique' => FALSE,
           ),
-          46 => array(
+          45 => array(
             'source' => 'xpathparser:46',
             'target' => 'field_line_of_business',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          47 => array(
+          46 => array(
             'source' => 'xpathparser:47',
             'target' => 'field_npi',
             'unique' => FALSE,
           ),
-          48 => array(
+          47 => array(
             'source' => 'xpathparser:48',
             'target' => 'field_provider_id',
             'unique' => FALSE,
           ),
-          49 => array(
+          48 => array(
             'source' => 'xpathparser:49',
             'target' => 'field_fax_number',
             'unique' => FALSE,
           ),
-          50 => array(
+          49 => array(
             'source' => 'xpathparser:50',
             'target' => 'field_service_area',
             'unique' => FALSE,
           ),
-          51 => array(
+          50 => array(
             'source' => 'xpathparser:51',
             'target' => 'field_office_hours',
             'unique' => FALSE,
           ),
-          52 => array(
+          51 => array(
             'source' => 'xpathparser:52',
             'target' => 'field_license_info',
             'unique' => FALSE,
           ),
-          53 => array(
+          52 => array(
             'source' => 'xpathparser:53',
             'target' => 'field_public_transportation_acce',
             'unique' => FALSE,
           ),
-          54 => array(
+          53 => array(
             'source' => 'xpathparser:54',
             'target' => 'field_ada_accesibility',
             'unique' => FALSE,
           ),
-          55 => array(
+          54 => array(
             'source' => 'xpathparser:55',
             'target' => 'field_experience',
             'unique' => FALSE,
           ),
-          56 => array(
+          55 => array(
             'source' => 'xpathparser:56',
             'target' => 'field_physically_disabled',
             'unique' => FALSE,
           ),
-          57 => array(
+          56 => array(
             'source' => 'xpathparser:57',
             'target' => 'field_chronic_illness',
             'unique' => FALSE,
           ),
-          58 => array(
+          57 => array(
             'source' => 'xpathparser:58',
             'target' => 'field_mentall_illness',
             'unique' => FALSE,
           ),
-          59 => array(
+          58 => array(
             'source' => 'xpathparser:59',
             'target' => 'field_hearing_visually_impaired',
             'unique' => FALSE,
           ),
-          60 => array(
+          59 => array(
             'source' => 'xpathparser:60',
             'target' => 'field_coocurring_disorders',
             'unique' => FALSE,
           ),
-          61 => array(
+          60 => array(
             'source' => 'xpathparser:61',
             'target' => 'field_end_stage_renal_disorders',
             'unique' => FALSE,
           ),
-          62 => array(
+          61 => array(
             'source' => 'xpathparser:62',
             'target' => 'field_aids_center',
             'unique' => FALSE,
           ),
-          63 => array(
+          62 => array(
             'source' => 'xpathparser:63',
             'target' => 'field_community_center',
             'unique' => FALSE,
           ),
-          64 => array(
+          63 => array(
             'source' => 'xpathparser:64',
             'target' => 'field_private_practice_offices',
             'unique' => FALSE,
           ),
-          65 => array(
+          64 => array(
             'source' => 'xpathparser:65',
             'target' => 'field_non_dac_hospital',
             'unique' => FALSE,
           ),
-          66 => array(
+          65 => array(
             'source' => 'xpathparser:66',
             'target' => 'field_non_english_lang_offerred',
             'unique' => FALSE,
           ),
-          67 => array(
+          66 => array(
             'source' => 'xpathparser:67',
             'target' => 'field_translation_services',
             'unique' => FALSE,
           ),
-          68 => array(
+          67 => array(
             'source' => 'xpathparser:68',
             'target' => 'field_electronic_prescribing',
             'unique' => FALSE,
           ),
-          69 => array(
+          68 => array(
             'source' => 'xpathparser:69',
             'target' => 'field_provider_url',
             'unique' => FALSE,
           ),
-          70 => array(
+          69 => array(
             'source' => 'xpathparser:70',
             'target' => 'field_provider_email',
             'unique' => FALSE,
+          ),
+          70 => array(
+            'source' => 'xpathparser:71',
+            'target' => 'field_county',
+            'term_search' => '0',
+            'autocreate' => 1,
           ),
         ),
         'update_existing' => '1',
