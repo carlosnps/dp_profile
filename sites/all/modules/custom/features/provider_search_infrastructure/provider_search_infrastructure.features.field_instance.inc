@@ -24,6 +24,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 0,
       ),
+      'search_index' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -68,6 +82,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 36,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 36,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 36,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -99,6 +127,20 @@ function provider_search_infrastructure_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 15,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 15,
+      ),
+      'search_result' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -145,6 +187,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 16,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 16,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 16,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -179,6 +235,20 @@ function provider_search_infrastructure_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 24,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 24,
+      ),
+      'search_result' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -229,6 +299,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 44,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 44,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 44,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -262,6 +346,20 @@ function provider_search_infrastructure_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 25,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 25,
+      ),
+      'search_result' => array(
         'label' => 'above',
         'module' => 'list',
         'settings' => array(),
@@ -305,6 +403,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 39,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 39,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 39,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -336,6 +448,20 @@ function provider_search_infrastructure_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 17,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 17,
+      ),
+      'search_result' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -386,6 +512,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 45,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 45,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 45,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -425,6 +565,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 42,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 42,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 42,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -456,6 +610,20 @@ function provider_search_infrastructure_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 53,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 53,
+      ),
+      'search_result' => array(
         'label' => 'above',
         'module' => 'taxonomy',
         'settings' => array(),
@@ -502,6 +670,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'taxonomy_term_reference_link',
         'weight' => 10,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 10,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 10,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -528,6 +710,64 @@ function provider_search_infrastructure_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-provider-field_dr_trans_equip_hosp'
+  $field_instances['node-provider-field_dr_trans_equip_hosp'] = array(
+    'bundle' => 'provider',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Doctor  if a Doctor
+Transportation if Transportation
+Equipment for Equipment
+Hospital is the Default
+',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 54,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 54,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 54,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_dr_trans_equip_hosp',
+    'label' => 'dr_trans_equip_hosp',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 12,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 50,
+    ),
+  );
+
   // Exported field_instance: 'node-provider-field_electronic_prescribing'
   $field_instances['node-provider-field_electronic_prescribing'] = array(
     'bundle' => 'provider',
@@ -536,6 +776,20 @@ function provider_search_infrastructure_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 49,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 49,
+      ),
+      'search_result' => array(
         'label' => 'above',
         'module' => 'list',
         'settings' => array(),
@@ -579,6 +833,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 43,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 43,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 43,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -610,6 +878,20 @@ function provider_search_infrastructure_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 37,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 37,
+      ),
+      'search_result' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -656,6 +938,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 31,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 31,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 31,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -690,6 +986,20 @@ function provider_search_infrastructure_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'search_result' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -736,6 +1046,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 22,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 22,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 22,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -767,6 +1091,20 @@ function provider_search_infrastructure_field_default_field_instances() {
     'description' => 'Treats hearing or visually impaired',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 41,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 41,
+      ),
+      'search_result' => array(
         'label' => 'above',
         'module' => 'list',
         'settings' => array(),
@@ -810,6 +1148,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 27,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 27,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 27,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -841,6 +1193,20 @@ function provider_search_infrastructure_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 3,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 3,
+      ),
+      'search_result' => array(
         'label' => 'above',
         'module' => 'taxonomy',
         'settings' => array(),
@@ -887,6 +1253,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 6,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -913,6 +1293,64 @@ function provider_search_infrastructure_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-provider-field_latitude'
+  $field_instances['node-provider-field_latitude'] = array(
+    'bundle' => 'provider',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 2,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_decimal',
+        'weight' => 55,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_latitude',
+    'label' => 'Latitude',
+    'required' => 0,
+    'settings' => array(
+      'max' => 90,
+      'min' => -90,
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 51,
+    ),
+  );
+
   // Exported field_instance: 'node-provider-field_license_info'
   $field_instances['node-provider-field_license_info'] = array(
     'bundle' => 'provider',
@@ -921,6 +1359,20 @@ function provider_search_infrastructure_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 34,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 34,
+      ),
+      'search_result' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -967,6 +1419,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'taxonomy_term_reference_link',
         'weight' => 28,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 28,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 28,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -993,6 +1459,64 @@ function provider_search_infrastructure_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-provider-field_longitude'
+  $field_instances['node-provider-field_longitude'] = array(
+    'bundle' => 'provider',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 2,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_decimal',
+        'weight' => 56,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_longitude',
+    'label' => 'Longitude',
+    'required' => 0,
+    'settings' => array(
+      'max' => 180,
+      'min' => -180,
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 52,
+    ),
+  );
+
   // Exported field_instance: 'node-provider-field_mentall_illness'
   $field_instances['node-provider-field_mentall_illness'] = array(
     'bundle' => 'provider',
@@ -1005,6 +1529,20 @@ function provider_search_infrastructure_field_default_field_instances() {
     'description' => 'treats Mental Illness',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 40,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 40,
+      ),
+      'search_result' => array(
         'label' => 'above',
         'module' => 'list',
         'settings' => array(),
@@ -1044,6 +1582,20 @@ function provider_search_infrastructure_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'search_result' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -1090,6 +1642,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 47,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 47,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 47,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1127,6 +1693,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 52,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 52,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 52,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1158,6 +1738,20 @@ function provider_search_infrastructure_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 29,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 29,
+      ),
+      'search_result' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -1204,6 +1798,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 33,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 33,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 33,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1244,6 +1852,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 23,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 23,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 23,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1275,6 +1897,20 @@ function provider_search_infrastructure_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 21,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 21,
+      ),
+      'search_result' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -1321,6 +1957,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 38,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 38,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 38,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1352,6 +2002,20 @@ function provider_search_infrastructure_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'search_result' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -1398,6 +2062,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 14,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 14,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 14,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1438,6 +2116,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 46,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 46,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 46,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1469,6 +2161,20 @@ function provider_search_infrastructure_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 51,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 51,
+      ),
+      'search_result' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -1515,6 +2221,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 30,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 30,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 30,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1549,6 +2269,20 @@ function provider_search_infrastructure_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 26,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 26,
+      ),
+      'search_result' => array(
         'label' => 'above',
         'module' => 'taxonomy',
         'settings' => array(),
@@ -1595,6 +2329,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'taxonomy_term_reference_link',
         'weight' => 1,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 1,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 1,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1629,6 +2377,20 @@ function provider_search_infrastructure_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 50,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 50,
+      ),
+      'search_result' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -1675,6 +2437,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 35,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 35,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 35,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1706,6 +2482,20 @@ function provider_search_infrastructure_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 32,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 32,
+      ),
+      'search_result' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -1752,6 +2542,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'taxonomy_term_reference_link',
         'weight' => 2,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 2,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 2,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1786,6 +2590,20 @@ function provider_search_infrastructure_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 18,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 18,
+      ),
+      'search_result' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -1832,6 +2650,20 @@ function provider_search_infrastructure_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 48,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 48,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 48,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1863,6 +2695,20 @@ function provider_search_infrastructure_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 19,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 19,
+      ),
+      'search_result' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -1911,6 +2757,11 @@ function provider_search_infrastructure_field_default_field_instances() {
   t('County');
   t('Degree');
   t('Designated Aids Center');
+  t('Doctor  if a Doctor
+Transportation if Transportation
+Equipment for Equipment
+Hospital is the Default
+');
   t('Electronic Prescribing');
   t('End Stage Renal Disorders');
   t('Experience');
@@ -1921,8 +2772,10 @@ function provider_search_infrastructure_field_default_field_instances() {
   t('Home Visits');
   t('Hospital Priv');
   t('Last Name');
+  t('Latitude');
   t('License Info');
   t('Line of Business');
+  t('Longitude');
   t('Mentall Illness');
   t('Middle Initial');
   t('NPI');
@@ -1950,6 +2803,7 @@ function provider_search_infrastructure_field_default_field_instances() {
   t('Treats Physically Disabled');
   t('Treats hearing or visually impaired');
   t('Zip');
+  t('dr_trans_equip_hosp');
   t('treats Mental Illness');
 
   return $field_instances;

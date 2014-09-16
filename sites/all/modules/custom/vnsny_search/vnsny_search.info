@@ -1,0 +1,4 @@
+name = VNSNY Provider Search
+description = Provider Search
+package = VNSNY
+core = 7.x

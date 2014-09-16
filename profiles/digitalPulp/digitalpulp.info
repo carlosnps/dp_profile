@@ -49,16 +49,10 @@ dependencies[] = facetapi
 dependencies[] = features
 dependencies[] = fe_block
 dependencies[] = fe_nodequeue
-dependencies[] = feeds
-dependencies[] = feeds_tamper
-dependencies[] = feeds_ui
-dependencies[] = feeds_import
-dependencies[] = feeds_tamper_ui
-dependencies[] = feeds_xpathparser
 dependencies[] = field_collection
 dependencies[] = file_entity
 dependencies[] = job_scheduler
-dependencies[] = libraries
+dependencies[] = libraries	
 dependencies[] = media
 dependencies[] = media_internet
 dependencies[] = migrate
@@ -80,6 +74,6 @@ dependencies[] = workbench_moderation
 dependencies[] = workbench
 dependencies[] = wysiwyg
 
-// Features
+dependencies[] = vnsny_search
 dependencies[] = provider_search_infrastructure
 

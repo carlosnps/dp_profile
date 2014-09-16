@@ -1,0 +1,618 @@
+<?php
+
+/**
+ * Implementation of hook_menu
+ */
+
+function vnsny_search_menu() {
+	$items = array();
+
+	$items['provider/search/%'] = array(
+      'title' => t("Provider Search"),
+      'description' => t("Desc I'm looking for"),
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('find_provider' , 2),
+      'access arguments' => array('access content'),
+    );
+
+	return $items;
+}
+
+
+/**
+ * Implementation of hook_feeds_presave
+ */
+
+function vnsny_search_feeds_presave(FeedsSource $source, $entity, $item) {
+
+	$val = '';
+	if ($entity->type == 'provider') {
+		$entity->title = $entity->field_last_name[LANGUAGE_NONE][0]['value'];
+		if (!empty($entity->field_first_name[LANGUAGE_NONE][0]['value'])) {
+			$val = 'Doctor';
+		} else {
+			// check to see if its a transportation
+			// lets get the Term Ref
+			$checkFor = 'Transportation' ;
+			$term = taxonomy_get_term_by_name($checkFor , 'provider_type');
+			$ct = count($term);
+			if ($ct) {
+				$tid = current($term)->tid;
+				if ($entity->field_provider_type[LANGUAGE_NONE][0]['tid']  == $tid) {
+					$val = $checkFor;
+				}
+			}  
+		}
+		if (empty($val)) {
+			// its not a Doctor nor Transportation
+			// loop until found or done
+			$done = FALSE;
+			$found = FALSE;
+			$checkFor = 'Equipment';
+			$termNames = array(
+				0 =>'equipment',
+				1 => 'prostetic',
+			);
+			$termCT = count($termNames);
+			$x = 0 ;
+			// lets check for a match in field_provider_type
+            do {
+            	$termName = $termNames[$x];
+				$tid = $entity->field_provider_type['und'][0]['tid'] ;
+				$term =  taxonomy_term_load($tid);
+				$ct = count($term);
+				if ($ct) {
+					$pos =  stripos($term->name , $termName);
+					if ($pos === FALSE) {
+						$found = FALSE;
+					} else {
+						$found = TRUE;
+						$val = $checkFor;
+					}
+				}
+				$x++;
+				$done = $x >= $termCT;
+			} while (!$found && !$done);
+			
+            $done = $found;
+
+            // if we did not find a match above lets check field_specialty1
+            $specialty1 = $entity->field_specialty1[LANGUAGE_NONE];
+            $specialtyCT = count($specialty1);
+            $x = 0;
+			while (!$found && !$done) {
+				$termName = $termNames[$x];
+				$y = 0;
+				$doneTerm = FALSE;
+				do {
+					$tid = $specialty1[$y]['tid'];
+					$term =  taxonomy_term_load($tid);
+					$ct = count($term);
+					if ($ct) {
+						$pos =  stripos($term->name , $termName);
+						if ($pos === FALSE) {
+							$found = FALSE;
+						} else {
+							$found = TRUE;
+							$val = $checkFor;
+						}
+					}
+					$y++;
+					$doneTerm = $y >= $specialtyCT;
+				} while (!$found && !$doneTerm);
+				$x++;
+				$done = $x < $termCT;
+			}
+
+			if (!$found) {
+				// then it must be a hospital
+				$val = 'Hospital';
+			}
+		}
+		$entity->field_dr_trans_equip_hosp[LANGUAGE_NONE][0]['value'] = $val;
+		// if this is NOT a Doctor remove any specialty field which may have been sent
+	}
+}
+
+/*
+ * Implementation of hook_feeds_after_parse
+ *
+ * If provider data has a first name (xpathparser:6	First Name) then it should have specialty
+ *    which are xpathparser:1 and xpathparser:2 and xpathparser:3
+ * 
+ * If its not a doctor then get rid of the specialty as its not needed.
+ */
+function vnsny_search_feeds_after_parse(FeedsSource $source, FeedsParserResult $result) {
+    $ct = count($result->items);  
+    for ($x=0 ; $x < $ct ; $x++) {
+	$fname = trim($result->items[$x]['xpathparser:6']);
+		if (empty($fname)) {
+			$result->items[$x]['xpathparser:1'] = null;
+		  	$result->items[$x]['xpathparser:2'] = null;
+		  	$result->items[$x]['xpathparser:3'] = null;
+		 }
+	}
+ }
+
+function find_provider($form , &$form_state , $lob) {
+//	dpm($form_state);
+//	dpm($lob);
+
+	$form = array();
+	$vocabulary = taxonomy_vocabulary_machine_name_load('line_of_business');
+	$terms = entity_load('taxonomy_term', '' , array('vid' => $vocabulary->vid));
+	$lobs = array();
+	foreach($terms as $key=>$value) {
+		$lobs[$key] = $value->name;
+	}
+	$value = 'No Line Of Business';
+	$type  = 'textfield';
+
+	if (isset($form_state['values']['lob'])) {
+		$lob = $lobs[$form_state['values']['lob']]; 
+	} 
+
+	if (isset($lob)) {
+		$found = array_search($lob, $lobs);
+		if ($found === FALSE) {
+			$value = 'Invalid Line Of Business' ;
+		} else {
+			$value = $found;
+			$type  = 'hidden';
+		}
+	}
+
+	$form['lob'] = array(
+		'#type' => $type,
+		'#value' => $value,
+		'#holdit' => $value,
+		'#required' => TRUE ,
+    	'#size' => 21,
+    );
+
+
+// Medication and Pharmacy will load an iframe	
+  $searchTypes = array(
+		0 => 'Doctor',
+		1 => 'Hospital Centers Facitilites',
+		2 => 'Medical Equipment',
+		3 => 'Transportation',
+		4 => 'Medication',
+		5 => 'Pharmacy',
+	);
+
+	$default_value = 0;
+	$form['searchType'] = array(
+   		'#type'=>'select' ,
+    	'#options' => $searchTypes,
+    	'#default_value' => $default_value,
+     	'#size' => 6,
+     	'#ajax' => array(
+        	'callback' => 'ajax_get_lookupType',
+        	'wrapper' => 'search-type',
+      	),      	
+	);
+
+  	$lookupTypes = array(
+  		0 => 'Name',
+  		1 => 'Location',
+
+  	);
+  	$default_value = 0;    
+
+	$desc = 'Find Doctor by';
+    $form['lookupType'] = array(
+   		'#type' => 'select',
+   		'#prefix' => '<div id="search-type">',
+      	'#suffix' => '</div>',
+   		'#description' => $desc,
+    	'#options' => $lookupTypes,
+    	'#default_value' => $default_value,
+     	'#size' => 2,
+	);
+
+	$form['location'] = array(
+	    '#type' => 'fieldset',
+	    '#title' => t('Search by location'),
+	    
+	    '#states' => array(
+	    	'visible' => array(
+	        	':input[name="lookupType"]' => array('value' => '1'),
+	      	),
+    	),
+  	);
+
+    $vocabulary = taxonomy_vocabulary_machine_name_load('provider_type');
+	$terms = entity_load('taxonomy_term', '' , array('vid' => $vocabulary->vid));
+	$opt = array();
+	foreach($terms as $key=>$value) {
+		$name = $value->name;
+		if ($name == "Primary Care Provider") {
+			$default_value = $key;
+		}
+		$opt[$key] = $value->name;
+	}
+	// if we did not find the Primary Care Provider then set the default to the first value 
+    if (!isset($default_value)) {
+    	$default_value =  key($opt);
+    }
+    $form['location']['provider_type'] = array(
+    	'#type'=>'select' ,
+    	'#description' => t("I'm looking for"),
+    	'#options' => $opt,
+    	'#default_value' => $default_value,
+     	'#size' => 1,
+      	'#required' => TRUE,
+      	'#states' => array(
+	    	'visible' => array(
+	        	':input[name="searchType"]' => array('value' => '0'),
+	      	),
+    	),
+    );
+     
+    if (count($opt) == 0) {
+
+    	unset($form['location']['provider_type']['#default_value']);
+    } 
+
+    $default_value = 'zip code' ;
+    $form['location']['zip'] = array(
+    	'#type'=>'textfield' ,
+    	'#description' => t("near"),
+    	'#default_value' => $default_value,
+    	'#size' => 10,
+   	);
+    
+    $miles = array(
+    	0 => t('1 mile'),
+    	1 => t('5 miles'),
+    	2 => t('10 miles'),
+    	3 => t('20 miles'),
+    	4 => t('20+ miles'),
+    );
+    $default_value = 1;
+
+   	$form['location']['miles_away'] = array(
+    	'#type'=>'select' ,
+    	'#options' => $miles,
+    	'#default_value' => $default_value,
+     	'#size' => 1,
+    );
+
+    $form['location']['more_options'] = array(
+		'#type' => 'fieldset', 
+		'#title' => t('more options'), 
+		'#collapsible' => TRUE, 
+		'#collapsed' => TRUE,
+	);
+
+    $default_value = 'enter city' ;
+	$form['location']['more_options']['city'] = array(
+    	'#type' => 'textfield',
+    	'#default_value' => $default_value,
+    	'#size' => 25,
+	);
+
+// hard coding the state array for now.  	
+// Have an open question on BaseCamp.	
+	$states = array(
+    	'NY' => t('NY'),
+    	'CT' => t('CT'),
+    	'NJ' => t('NJ'),
+   
+    );
+
+   	$form['location']['more_options']['state'] = array(
+    	'#type'=>'select' ,
+    	'#options' => $states,
+    	'#empty_option' => t('select a state'),
+     	'#size' => 1,
+    );
+
+    $vocabulary = taxonomy_vocabulary_machine_name_load('county');
+	$terms = entity_load('taxonomy_term', '' , array('vid' => $vocabulary->vid));
+	$counties = array();
+	foreach($terms as $key=>$value) {
+		$counties[$key] = $value->name;
+	}
+	$form['location']['more_options']['counties'] = array(
+    	'#type'=>'select' ,
+    	'#options' => $counties,
+    	'#empty_option' => t('select a county'),
+     	'#size' => 1,
+    );
+
+   	$vocabulary = taxonomy_vocabulary_machine_name_load('language');
+	$terms = entity_load('taxonomy_term', '' , array('vid' => $vocabulary->vid));
+	$languages = array();
+	foreach($terms as $key=>$value) {
+		if (!empty($value->name)) {
+			$languages[$key] = $value->name;
+		}
+	}
+	$form['location']['more_options']['language'] = array(
+    	'#type'=>'select' ,
+    	'#options' => $languages,
+    	'#empty_option' => t('select a language'),
+     	'#size' => 1,
+     	'#states' => array(
+	    	'visible' => array(
+	        	':input[name="searchType"]' => array('value' => '0'),
+	      	),
+    	),
+    );
+
+    $vocabulary = taxonomy_vocabulary_machine_name_load('hospital_privilege');
+	$terms = entity_load('taxonomy_term', '' , array('vid' => $vocabulary->vid));
+	$hospitals = array();
+	foreach($terms as $key=>$value) {
+		if (!empty($value->name)) {
+			$hospitals[$key] = $value->name;
+		}
+	}
+	$form['location']['more_options']['hospital'] = array(
+    	'#type'=>'select' ,
+    	'#options' => $hospitals,
+    	'#empty_option' => t('select a hospital'),
+     	'#size' => 1,
+     	'#states' => array(
+	    	'visible' => array(
+	        	':input[name="searchType"]' => array('value' => '0'),
+	      	),
+    	),
+    );
+
+    $form['name'] = array(
+	    '#type' => 'fieldset',
+	    '#title' => t('Search by name'),   
+	    '#states' => array(
+	    	'visible' => array(
+	        	':input[name="lookupType"]' => array('value' => '0'),
+	      	),
+    	),
+  	);
+
+    $default_value	= 'enter physician name or ID';
+	$form['name']['prov_name'] = array(
+    	'#type' => 'textfield',
+    	'#prefix' => '<div id="search-type">',
+      	'#suffix' => '</div>',
+    	'#default_value' => $default_value,
+    	'#size' => 35,
+	);   
+
+  	if (isset($form_state['values']['county'])) {   	
+    	$form_state['values']['citytwo'] = 'enter city';
+    	$form_state['input']['citytwo'] = $form_state['values']['citytwo'];
+
+    } 
+
+	$form['name']['citytwo'] = array(
+    	'#type' => 'textfield',
+    	'#prefix' => '<div id="name_city">',
+      	'#suffix' => '</div>',
+      	'#description' => 'or' ,
+    	'#default_value' => 'enter city',
+    	'#size' => 10,
+    	
+    	'#ajax' => array(
+        	'callback' => 'ajax_get_name_county',
+        	'wrapper' => 'namecounty',
+      	), 	      	    	
+	);
+
+	if (isset($form_state['values']['citytwo'])) {   	
+    	$form_state['values']['county'] = '';
+    	$form_state['input']['county'] = $form_state['values']['county'];
+    } 
+
+	$form['name']['county'] = array(
+    	'#type'=>'select' ,
+    	'#prefix' => '<div id="namecounty">',
+      	'#suffix' => '</div>', 
+    	'#options' => $counties,
+    	'#empty_option' => t('select county'),
+     	'#size' => 1,
+     	'#ajax' => array(
+        	'callback' => 'ajax_get_name_city2',
+        	'wrapper' => 'name_city',
+      	),    	     	
+    );
+
+
+	$form['submit'] = array(
+		'#type' => 'submit', 
+		'#value' => t('Search') ,
+		'#submit' => array('find_it'),
+
+	);
+// dpm($form);  	
+
+    return $form;
+}
+
+function ajax_get_lookupType(&$form, $form_state) {
+
+	if (isset($form_state['values']['searchType'])) {
+    	$indx = $form_state['values']['searchType'];
+    } else {
+    	$indx = 0;
+    }
+
+    $searchTypes = array(
+		0 => 'Doctor',
+		1 => 'Hospital Centers Facitilites',
+		2 => 'Medical Equipment',
+		3 => 'Transportation',
+		4 => 'Medication',
+		5 => 'Pharmacy',
+	);
+
+	// this array is used as the default values for name lookup (prov_name)
+	$displays = array (
+		0 => 'enter physician name or ID',
+		1 => 'enter Hospital name or ID',
+		2 => 'enter Medical Equipment Co name or ID',
+		3 => 'enter Transportation Co name or ID',
+	);
+
+	$desc = 'Find ' . $searchTypes[$indx] . ' by'; 
+	$commands = array();
+ 	$commands[] = ajax_command_invoke('#edit-prov-name', 'val' , array($displays[$indx]));
+
+ 	if ($indx) {
+	 	$commands[] = ajax_command_invoke('#edit-more-options' , 'removeClass' , array('collapsible'));
+	 	$commands[] = ajax_command_invoke('#edit-more-options' , 'removeClass' , array('collapsed'));
+	 	$commands[] = ajax_command_invoke('#edit-more-options' , 'removeClass' , array('collapse-processed'));
+	 	$commands[] = ajax_command_css('#edit-more-options legend', array('display' => 'none'));
+ 	} else {
+ 		$commands[] = ajax_command_invoke('#edit-more-options' , 'addClass' , array('collapsible'));
+	 	$commands[] = ajax_command_invoke('#edit-more-options' , 'addClass' , array('collapsed'));
+	 	$commands[] = ajax_command_invoke('#edit-more-options' , 'addClass' , array('collapse-processed'));
+	 	$commands[] = ajax_command_css('#edit-more-options legend', array('display' => 'block'));
+
+ 	}
+
+ 	$html = '<div class="description">' . $desc . '</div>';
+	$commands[] = ajax_command_replace('#search-type .description' , $html);
+	return array('#type' => 'ajax', '#commands' => $commands);
+
+//return  $form['lookupType'];	
+}
+
+function ajax_get_name_county($form, &$form_state) {
+	return $form['name']['county'];
+}
+
+function ajax_get_name_city2($form, &$form_state) {
+	return $form['name']['citytwo'];
+}
+
+function find_provider_validate($form, $form_state) {
+//	dpm($form);
+//	dpm($form_state);
+/* only need to check to make sure we have a valid zip code.
+ * but only validdate the zip when its needed.  That is when the slookupType is by Location.  If we check
+ * when the lookupType is Name and the user had entered an invalid zip in lookupType, then we would be reporting
+ * the same error as before.  Lets not force the consumer to blank out zip
+ */
+ dpm('in validate function');  
+ dpm($form);
+ dpm($form_state);
+   	$lob = $form_state['values']['lob'];
+	if ($lob == 'Invalid Line Of Business' || $lob == 'No Line Of Business') {
+   		form_set_error('lob' , t('Application error.  Invalid LOB'));			
+	}
+
+	$lookupType = $form_state['values']['lookupType'];
+	if ($lookupType == 1) {
+		$zip = $form_state['values']['zip'] == 'zip code' ? '' : $form_state['values']['zip'];
+		if (!empty($zip)) {
+			$valid =  preg_match('/^[0-9]{5}([- ]?[0-9]{4})?$/' ,  $zip); 
+			if (!$valid) {
+				form_set_error('zip' , t('Invalid Zip Code'));
+			}
+		}
+	}
+	find_it($form , $form_state);
+dpm('exiting validate');	
+}
+
+function find_it($form , &$form_state) {
+	dpm('in submit function'); 
+
+	dpm($form);
+	dpm($form_state);
+
+	$displays = array (
+		0 => 'enter physician name or ID',
+		1 => 'enter Hospital name or ID',
+		2 => 'enter Medical Equipment Co name or ID',
+		3 => 'enter Transportation Co name or ID',
+	);
+
+	$lob = $form_state['values']['lob'];
+	$searchType = $form_state['values']['searchType'];
+	$lookupType  = $form_state['values']['lookupType'];
+	$provider_type = $form_state['values']['provider_type'];
+	$zip = $form_state['values']['zip'] == 'zip code' ? '' : $form_state['values']['zip'];
+	$miles = $form_state['values']['miles_away'];
+	$state = $form_state['values']['state'];
+	$city = $form_state['values']['city']  == 'enter city' ? '' : $form_state['values']['city'];
+	$counties = trim($form_state['values']['counties']);
+	$language = trim($form_state['values']['language']);
+	$hospital = trim($form_state['values']['hospital']);
+	$prov_name = strtolower($form_state['values']['prov_name']);
+	$citytwo = $form_state['values']['citytwo'] == 'enter city' ? '' : strtolower($form_state['values']['citytwo']);
+	$county = $form_state['values']['county'];
+
+	$qry = array();
+
+	$qry[] = 'im_field_line_of_business:' . $lob ;
+
+	if (!empty($provider_type)) {
+		$qry[] = 'im_field_provider_type:' . $provider_type;
+	}
+
+// Lets look for the Lookup by Name
+	if ($lookupType == 0) {
+		if (!empty($prov_name)) {
+			if ($prov_name <> strtolower($displays[$searchType])) {
+				$qry[] = 'sm_field_last_name:' . $prov_name . '*';
+			}
+		}
+
+		if (!empty($citytwo)) {
+			$qry[] ='sm_field_city:' . $citytwo . '*';
+		}
+
+		if (!empty($county )) {
+			$qry[] = 'im_field_county:' . $county;
+		}
+	} else {
+//  this must be a lookup by location
+//  if the searchType is a Doctor (0) we have more search terms
+		if ($searchType == 0) {
+			if (!empty($provider_type)) {
+				$qry[] = 'im_field_provider_type: ' . $provider_type;
+			}
+
+			if (!empty($language)) {
+				$qry[] = 'im_field_provider_lang: ' . $language;
+			}
+
+			if (!empty($hospital)) {
+				$qry[] = 'im_field_hospital_priv: ' . $hospital;
+			}
+		}
+
+		if (!empty($city)) {
+			$qry[] = 'sm_field_city:' . $city;
+		}
+
+		if (!empty($state)) {
+			$qry[] =  'sm_field_state:' . $state;
+		}
+
+		if (!empty($counties)) {
+			$qry[] = 'im_field_county:' . $counties;
+		}
+	}	
+//dpm($qry);
+	$params = array(
+//		'fq' => 'label:CASA Promesa Adult Day Health Care',
+//		'q' => 'sm_field_last_name:"CASA Promesa Adult Day Health Care"',
+//		'q' => $qry,
+		'fq' => $qry,
+	);
+//dpm($params);
+
+	$query = apachesolr_search_run("apachesor" , $params);
+	dpm($query);
+//	$query = new SolrBaseQuery();
+//drupal_alter('apachesolr_query', $query);
+
+}
+
+
+
